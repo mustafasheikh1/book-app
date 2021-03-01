@@ -28,11 +28,16 @@ export class BookController {
 	 * Get All Books
 	 */
 	@Get()
-	async getBooks(@CurrentUser() user: IUser): Promise<IBook[] | HttpException> {
-		if (!user || !user.id) {
-			return new HttpException('User not Found', HttpStatus.NOT_FOUND);
-		}
-		return this._book.getAllBooks(user);
+	async getBooks(): Promise<IBook[] | HttpException> {
+		return this._book.getAllBooks();
+	}
+
+	/**
+	 * Get All Books
+	 */
+	@Get(':id')
+	async getBook(@Param() param: { id: string }): Promise<IBook | HttpException> {
+		return this._book.getBook(param.id);
 	}
 
 	/**
@@ -72,6 +77,11 @@ export class BookController {
 		}
 	}
 
+	/**
+	 * @description Delete Book
+	 * @param param
+	 * @param user
+	 */
 	@Delete(':id')
 	async deleteBook(@Param() param: { id: string }, @CurrentUser() user: IUser): Promise<IBook | HttpException> {
 		try {

@@ -27,18 +27,15 @@ export class BookService {
 					return new HttpException('The Book Already exisits', HttpStatus.CONFLICT);
 				}
 				return new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
-
-				if (err instanceof ValidationError || err instanceof UniqueConstraintError) throw err;
-				return new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
 			});
 	}
 
 	/**
 	 * @description Get All Book
 	 */
-	public async getAllBooks($user: IUser): Promise<IBook[] | HttpException> {
+	public async getAllBooks(): Promise<IBook[] | HttpException> {
 		try {
-			return await this._book.findAll<Book>({ where: { autherId: $user.id } });
+			return await this._book.findAll<Book>();
 		} catch (err) {
 			if (err instanceof ValidationError || err instanceof UniqueConstraintError) throw err;
 			return new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -50,9 +47,9 @@ export class BookService {
 	 * @param $id
 	 * @param $user
 	 */
-	public async getBook($id: string, $user: IUser): Promise<IBook | HttpException> {
+	public async getBook($id: string): Promise<IBook | HttpException> {
 		try {
-			return await this._book.findOne<Book>({ where: { id: $id, autherId: $user.id } });
+			return await this._book.findOne<Book>({ where: { id: $id } });
 		} catch (err) {
 			if (err instanceof ValidationError || err instanceof UniqueConstraintError) throw err;
 			return new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -68,7 +65,7 @@ export class BookService {
 	public async patchBook($id: string, $book: IBook, $user: IUser): Promise<IBook | HttpException> {
 		try {
 			await this._book.update<Book>($book, { where: { id: $id, autherId: $user.id } });
-			return await this.getBook($id, $user);
+			return await this.getBook($id);
 		} catch (err) {
 			return new HttpException('Error while Updating', HttpStatus.INTERNAL_SERVER_ERROR);
 		}
