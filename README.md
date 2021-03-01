@@ -7,7 +7,19 @@
 
 - `http://localhost:3000/v1/book` GET
 - `http://localhost:3000/v1/book` POST
+`
+{
+    "name": "Test's Book",
+    "iban": "NL93ABNA1655314556"
+}
+`
 - `http://localhost:3000/v1/book/:id` PATCH
+`
+{
+    "name": "Test's Book",
+    "iban": "NL93ABNA1655314556"
+}
+`
 - `http://localhost:3000/v1/book/:id` DELETE
 
 **Database Config**
