@@ -3,7 +3,21 @@
 **Endpoints**
 
 - `http://localhost:3000/v1/auth/login` POST
+`
+{
+    "email":"danish@gmail.com",
+    "password": "qwertyuiop"
+}
+`
 - `http://localhost:3000/v1/auth/login` POST
+`
+{
+    "email":"danish@gmail.com",
+    "password": "qwertyuiop",
+    "firstName": "Danish",
+    "lastName": "anwaar"
+}
+`
 
 - `http://localhost:3000/v1/book` GET
 - `http://localhost:3000/v1/book` POST
