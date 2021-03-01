@@ -1,0 +1,14 @@
+export enum TWO_FACTOR_AUTHENTICATION_TYPES {
+  SMS = 0,
+  GOOGLE_AUTH = 1,
+  EMAIL = 2,
+  WHATSAPP = 3,
+}
+
+export enum TWO_FACTOR_AUTHENTICATION_STATUS {
+  PENDING = 0,
+  VALID = 1,
+  INVALID = 2,
+  CANCELED = 3,
+  EXPIRED = 4,
+}

@@ -6,10 +6,23 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2017",
+    "target": "ES2020",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true
+    "baseUrl": "src",
+    "incremental": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@common/*": ["common/*"],
+      "@config/*": ["config/*"],
+      "@enums/*": ["common/enums/*"],
+      "@interfaces/*": ["common/interfaces/*"],
+      "@utils/*": ["common/utils/*"],
+      "@types/*": ["common/types/*"],
+      "@models": ["DAL/models"],
+      "@currentUser": ["common/decorators/current-user.decorator"],
+      "@userRoles": ["common/decorators/roles.decorator"]
+    }
   }
 }
