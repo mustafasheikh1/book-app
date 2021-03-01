@@ -1,3 +1,23 @@
+## Documentation
+
+**Endpoints**
+
+- `http://localhost:3000/v1/auth/login` POST
+- `http://localhost:3000/v1/auth/login` POST
+
+- `http://localhost:3000/v1/book` GET
+- `http://localhost:3000/v1/book` POST
+- `http://localhost:3000/v1/book/:id` PATCH
+- `http://localhost:3000/v1/book/:id` DELETE
+
+**Database Config**
+
+*MariaDB*
+
+`src/database/config/database.config.ts`
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
